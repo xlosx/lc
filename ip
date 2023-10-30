@@ -7,9 +7,9 @@ Blue='\033[36m'
 GREEN='\033[0;32m'
 grenbo='\e[92;1m'
 yellow='\033[0;33m'
-tokgit=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
+tokgit=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
 TIMES="10"
-KEY="6071809974:AAENfe_1BAHno9y9-VE91me-0en_ssPAqQ"
+KEY="6486088494:AAHK00b5qJoWHCxJtCaOeYUMXhYNOLThu78"
 COMMAND=$(curl -sS https://raw.githubusercontent.com/takbebeh/Tunneling/main/Sandi/cominstall)
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 MYIP=$(curl -s ipv4.icanhazip.com)
@@ -32,18 +32,18 @@ Registrasi IP Admin Done
     curl -s --max-time $TIMES -d "chat_id=${idchat}&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 }
 function Sekusi() {
-    git clone https://github.com/takbebeh/Registrasi.git &> /dev/null
-    git config --global user.email "alfinproject22@gmail.com" &> /dev/null
-    git config --global user.name "takbebeh" &> /dev/null
+    git clone https://github.com/xlosx/Regis.git &> /dev/null
+    git config --global user.email "daenkona@gmail.com" &> /dev/null
+    git config --global user.name "xlosx" &> /dev/null
     cd /root/Registrasi/
     rm -rf .git
     git init  &> /dev/null
     sed -i "s/### $iputama $wstart $wexp $tipee $namacli $badm/### $iputama $wstart $wexp $ADMM $namacli $namaadmin/g" /root/Registrasi/ipvip
     git add .  &> /dev/null
-    git commit -m renew &> /dev/null
+    git commit -m "regis" &> /dev/null
     git branch -M main &> /dev/null
-    git remote add origin https://github.com/takbebeh/Registrasi &> /dev/null
-    git push -f https://${tokgit}@github.com/takbebeh/Registrasi.git &> /dev/null
+    git remote add origin https://github.com/xlosx/Regis.git &> /dev/null
+    git push -f https://${tokgit}@github.com/xlosx/Regis.git &> /dev/null
     rm -rf /root/Registrasi
     TeleNotif
     clear
@@ -131,7 +131,7 @@ function DetailNama() {
 }
 
 function VerifData() {
-    git clone https://github.com/takbebeh/Registrasi.git &> /dev/null
+    git clone https://github.com/xlosx/Regis.git &> /dev/null
     ipcek=$(cat /root/Registrasi/ipvip | grep $iputama | awk '{print $2}')
     wstart=$(cat /root/Registrasi/ipvip | grep $iputama | awk '{print $3}')
     wexp=$(cat /root/Registrasi/ipvip | grep $iputama | awk '{print $4}')
@@ -163,7 +163,7 @@ function CekAdmin() {
     echo -e " [INFO] Password Sedang Kami Periksa Mohon Menunggu"
     sleep 3
     PassAdminOK=$(echo "$PassAdmin" | base64)
-    izininstall=$(curl -sS https://raw.githubusercontent.com/takbebeh/Registrasi/main/dataadmin | grep $PassAdminOK | awk '{print $3}')
+    izininstall=$(curl -sS https://raw.githubusercontent.com/xlosx/Regis/main/dataadmin | grep $PassAdminOK | awk '{print $3}')
     if [[ $PassAdminOK = $izininstall ]]; then
         clear
     else
@@ -187,7 +187,7 @@ function CekAdmin() {
 rm -rf /root/Registrasi >/dev/null 2>&1
 clear
 CekAdmin
-git clone https://github.com/takbebeh/Registrasi.git &> /dev/null
+git clone https://github.com/xlosx/Regis.git &> /dev/null
 NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/root/Registrasi/ipvip")
 echo -e "
  ${yellow}┌─────────────────────────────────────────────────────────┐${NC}
