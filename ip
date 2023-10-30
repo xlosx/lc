@@ -1,0 +1,210 @@
+#!/bin/bash
+# COLOR VALIDATION
+RED='\033[0;31m'
+NC='\033[0m'
+gray='\e[1;30m'
+Blue='\033[36m'
+GREEN='\033[0;32m'
+grenbo='\e[92;1m'
+yellow='\033[0;33m'
+tokgit=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
+TIMES="10"
+KEY="6071809974:AAENfe_1BAHno9y9-VE91me-0en_ssPAqQ"
+COMMAND=$(curl -sS https://raw.githubusercontent.com/takbebeh/Tunneling/main/Sandi/cominstall)
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+MYIP=$(curl -s ipv4.icanhazip.com)
+ADMM=$(echo Admin)
+ipreg="1"
+
+function TeleNotif() {
+    TEXT="
+---------------
+Registrasi IP Admin Done
+---------------
+<code>Vps Name    :</code> <code>${iputama}</code>
+<code>IP VPS Admin:</code> <code>${namacli}</code>
+<code>Status Vps  :</code> <code>${ADMM}</code>
+---------------
+<code>Change By:</code> <code>${namaadmin}</code>
+---------------
+<b>Thanks To @Mass_Alfin</b>
+---------------"
+    curl -s --max-time $TIMES -d "chat_id=${idchat}&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+}
+function Sekusi() {
+    git clone https://github.com/takbebeh/Registrasi.git &> /dev/null
+    git config --global user.email "alfinproject22@gmail.com" &> /dev/null
+    git config --global user.name "takbebeh" &> /dev/null
+    cd /root/Registrasi/
+    rm -rf .git
+    git init  &> /dev/null
+    sed -i "s/### $iputama $wstart $wexp $tipee $namacli $badm/### $iputama $wstart $wexp $ADMM $namacli $namaadmin/g" /root/Registrasi/ipvip
+    git add .  &> /dev/null
+    git commit -m renew &> /dev/null
+    git branch -M main &> /dev/null
+    git remote add origin https://github.com/takbebeh/Registrasi &> /dev/null
+    git push -f https://${tokgit}@github.com/takbebeh/Registrasi.git &> /dev/null
+    rm -rf /root/Registrasi
+    TeleNotif
+    clear
+    echo -e "
+ ${yellow}┌─────────────────────────────────────────────────────────┐${NC}
+ ${yellow}│${NC}                 ${GREEN}IDENTITAS LISENSI CLIENT${NC}                ${yellow}│${NC}
+ ${yellow}│─────────────────────────────────────────────────────────│${NC}
+ ${yellow}│${NC}     ${Blue}Client Name${NC}: ${grenbo}${namacli}${NC}
+ ${yellow}│${NC}     ${Blue}IP VPS     ${NC}: ${grenbo}${iputama}${NC}
+ ${yellow}│${NC}     ${Blue}Status VPS ${NC}: ${grenbo}${tipee}${NC}
+ ${yellow}└─────────────────────────────────────────────────────────┘${NC}
+ ${yellow}┌─────────────────────────────────────────────────────────┐${NC}
+ ${yellow}│${NC}             ${GREEN}IDENTITAS ADMIN LISENSI [UPDATE]${NC}            ${yellow}│${NC}
+ ${yellow}│─────────────────────────────────────────────────────────│${NC}
+ ${yellow}│${NC}  ${Blue}Admin Name${NC}: ${grenbo}${namaadmin}${NC}   ${Blue}Status Admin${NC}: ${yellow}${statusadmin}${NC}
+ ${yellow}└─────────────────────────────────────────────────────────┘${NC}
+ ${yellow}Notifikasi Lisensi Akan Dikirimkan Oleh Bot Ke Akun [ADMIN]${NC}
+      ${yellow}Silahkan Periksa Chat Telegram Dari @alf_robot${NC}"
+    read -n 1 -s -r -p "  Press any key to back on menu"
+    menu
+}
+function CekStatusIP() {
+    if [[ $tipee = $ADMM ]]; then
+        clear
+        echo -e "
+ ${yellow}┌─────────────────────────────────────────────────────────┐${NC}
+ ${yellow}│${NC}                  ${GREEN}INFORMASI DATA ADMIN${NC}                   ${yellow}│${NC}
+ ${yellow}└─────────────────────────────────────────────────────────┘${NC}
+ ${yellow}┌─────────────────────────────────────────────────────────┐${NC}
+ ${yellow}│${NC}         ${grenbo}IPVPS INI SUDAH TERDAFTAR SEBAGAI ADMIN${NC}         ${yellow}│${NC}
+ ${yellow}│${NC}       ${grenbo}SILAHKAN NIKMATI LAYANAN INI DENGAN BIJAK..!${NC}      ${yellow}│${NC}
+ ${yellow}│${NC}              ${grenbo}SALAM HANGAT ALFVPN COMMUNITY${NC}              ${yellow}│${NC}
+ ${yellow}│─────────────────────────────────────────────────────────│${NC}
+ ${yellow}│${NC}                    ${yellow}KONTAK REGISTRASI${NC}                    ${yellow}│${NC}
+ ${yellow}│${NC}     ${Blue}|Telegram: @Mass_Alfin | WhatsApp: 087749311100|${NC}    ${yellow}│${NC}
+ ${yellow}└─────────────────────────────────────────────────────────┘${NC}"
+        echo -e " "
+        exit 0
+    else
+        echo -e " "
+        clear
+    fi
+}
+function CekIP() {
+    if [[ $iputama = $ipcek ]]; then
+        CekStatusIP
+        DetailNama
+    else
+        clear
+        echo -e "
+ ${yellow}┌─────────────────────────────────────────────────────────┐${NC}
+ ${yellow}│${NC}                  ${GREEN}INFORMASI DATA ADMIN${NC}                   ${yellow}│${NC}
+ ${yellow}└─────────────────────────────────────────────────────────┘${NC}
+ ${yellow}┌─────────────────────────────────────────────────────────┐${NC}
+ ${yellow}│${NC}  ${RED}IPVPS Yang Anda Masukkan Belum Terdaftar Di Data Base${NC}  ${yellow}│${NC}
+ ${yellow}│${NC}${RED}Silahkan Lakukan Pengecekan Terlebih Dahulu Dan Coba Lagi${NC}${yellow}│${NC}
+ ${yellow}│${NC}              ${grenbo}SALAM HANGAT ALFVPN COMMUNITY${NC}              ${yellow}│${NC}
+ ${yellow}│─────────────────────────────────────────────────────────│${NC}
+ ${yellow}│${NC}                    ${yellow}KONTAK REGISTRASI${NC}                    ${yellow}│${NC}
+ ${yellow}│${NC}     ${Blue}|Telegram: @Mass_Alfin | WhatsApp: 087749311100|${NC}    ${yellow}│${NC}
+ ${yellow}└─────────────────────────────────────────────────────────┘${NC}"
+        echo -e " "
+        exit 0
+    fi
+}
+
+function DetailNama() {
+    clear
+    echo -e "
+ ${yellow}┌─────────────────────────────────────────────────────────┐${NC}
+ ${yellow}│${NC}                 ${GREEN}IDENTITAS LISENSI CLIENT${NC}                ${yellow}│${NC}
+ ${yellow}│─────────────────────────────────────────────────────────│${NC}
+ ${yellow}│${NC}     ${Blue}Client Name${NC}: ${grenbo}${namacli}${NC}
+ ${yellow}│${NC}     ${Blue}IP VPS     ${NC}: ${grenbo}${iputama}${NC}
+ ${yellow}│${NC}     ${Blue}Status VPS ${NC}: ${grenbo}${tipee}${NC}
+ ${yellow}└─────────────────────────────────────────────────────────┘${NC}
+ ${yellow}┌─────────────────────────────────────────────────────────┐${NC}
+ ${yellow}│${NC}                 ${GREEN}IDENTITAS ADMIN LISENSI${NC}                 ${yellow}│${NC}
+ ${yellow}│─────────────────────────────────────────────────────────│${NC}
+ ${yellow}│${NC}  ${Blue}Admin Name${NC}: ${grenbo}${namaadmin}${NC}   ${Blue}Status Admin${NC}: ${yellow}${statusadmin}${NC}
+ ${yellow}└─────────────────────────────────────────────────────────┘${NC}
+    [${yellow}INFO${NC}] ${RED}Tekan CTRL + C Untuk Cancel${NC}"
+    read -p "  Press ENTER To Change Ip Admin"
+    Sekusi
+}
+
+function VerifData() {
+    git clone https://github.com/takbebeh/Registrasi.git &> /dev/null
+    ipcek=$(cat /root/Registrasi/ipvip | grep $iputama | awk '{print $2}')
+    wstart=$(cat /root/Registrasi/ipvip | grep $iputama | awk '{print $3}')
+    wexp=$(cat /root/Registrasi/ipvip | grep $iputama | awk '{print $4}')
+    tipee=$(cat /root/Registrasi/ipvip | grep $iputama | awk '{print $5}')
+    namacli=$(cat /root/Registrasi/ipvip | grep $iputama | awk '{print $6}')
+    badm=$(cat /root/Registrasi/ipvip | grep $iputama | awk '{print $7}')
+    namaadmin=$(cat /root/Registrasi/dataadmin | grep $PassAdminOK | awk '{print $2}')
+    statusadmin=$(cat /root/Registrasi/dataadmin | grep $PassAdminOK | awk '{print $4}')
+    satubulan=$(cat /root/Registrasi/dataadmin | grep $PassAdminOK | awk '{print $5}')
+    duabulan=$(cat /root/Registrasi/dataadmin | grep $PassAdminOK | awk '{print $6}')
+    tigabulan=$(cat /root/Registrasi/dataadmin | grep $PassAdminOK | awk '{print $7}')
+    satutahun=$(cat /root/Registrasi/dataadmin | grep $PassAdminOK | awk '{print $8}')
+    idchat=$(cat /root/Registrasi/dataadmin | grep $PassAdminOK | awk '{print $9}')
+    rm -rf /root/Registrasi >/dev/null 2>&1
+    CekIP
+}
+
+function LOGO() {
+    echo -e "
+ ${yellow}┌─────────────────────────────────────────────────────────┐${NC}
+ ${yellow}│${NC}             ${GREEN}MENU REGISTRASI LISENSI [ADMIN]${NC}             ${yellow}│${NC}
+ ${yellow}└─────────────────────────────────────────────────────────┘${NC}"
+}
+
+function CekAdmin() {
+    LOGO
+    read -p " Password Admin: " PassAdmin
+    echo -e " "
+    echo -e " [INFO] Password Sedang Kami Periksa Mohon Menunggu"
+    sleep 3
+    PassAdminOK=$(echo "$PassAdmin" | base64)
+    izininstall=$(curl -sS https://raw.githubusercontent.com/takbebeh/Registrasi/main/dataadmin | grep $PassAdminOK | awk '{print $3}')
+    if [[ $PassAdminOK = $izininstall ]]; then
+        clear
+    else
+        clear
+        echo -e " ${yellow}┌─────────────────────────────────────────────────────────┐${NC}"
+        echo -e " ${yellow}│${NC}                  ${GREEN}INFORMASI DATA ADMIN${NC}                   ${yellow}│${NC}"
+        echo -e " ${yellow}└─────────────────────────────────────────────────────────┘${NC}"
+        echo -e " ${yellow}┌─────────────────────────────────────────────────────────┐${NC}"
+        echo -e " ${yellow}│${NC}     ${RED}Password yang anda masukkan tidak kami ditemukan${NC}    ${yellow}│${NC}"
+        echo -e " ${yellow}│${NC}  ${RED}Saat ini anda belum bisa melakukan registrasi lisensi${NC}  ${yellow}│${NC}"
+        echo -e " ${yellow}│${NC}    ${RED}silahkan lakukan registrasi Admin terlebih dahulu${NC}    ${yellow}│${NC}"
+        echo -e " ${yellow}│${NC}              ${grenbo}SALAM HANGAT ALFVPN COMMUNITY${NC}              ${yellow}│${NC}"
+        echo -e " ${yellow}│─────────────────────────────────────────────────────────│${NC}"
+        echo -e " ${yellow}│${NC}                    ${yellow}KONTAK REGISTRASI${NC}                    ${yellow}│${NC}"
+        echo -e " ${yellow}│${NC}     ${Blue}|Telegram: @Mass_Alfin | WhatsApp: 087749311100|${NC}    ${yellow}│${NC}"
+        echo -e " ${yellow}└─────────────────────────────────────────────────────────┘${NC}"
+        echo -e " "
+        exit 0
+    fi
+}
+rm -rf /root/Registrasi >/dev/null 2>&1
+clear
+CekAdmin
+git clone https://github.com/takbebeh/Registrasi.git &> /dev/null
+NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/root/Registrasi/ipvip")
+echo -e "
+ ${yellow}┌─────────────────────────────────────────────────────────┐${NC}
+ ${yellow}│${NC}              ${GREEN}REGISTER ADMIN IPVPS TERDAFTAR${NC}             ${yellow}│${NC}
+ ${yellow}└─────────────────────────────────────────────────────────┘${NC}"
+echo -e " ${yellow}│${NC}   ${Blue}NO${NC}       ${Blue}IP${NC}          ${Blue}Expired${NC}    ${Blue}Status${NC}   ${Blue}Nama${NC}         ${yellow}│${NC}"
+echo -e " ${yellow}└─────────────────────────────────────────────────────────┘${NC}"
+grep -E "^### " "/root/Registrasi/ipvip" | cut -d ' ' -f 2,4,5,6 | column -t | sort | uniq | nl -s ') '
+rm -rf /root/Registrasi >/dev/null 2>&1
+echo ""
+echo -e "  • [NOTE] Tekan CTRL+C to Cancel"
+echo -e "
+ ${yellow}┌─────────────────────────────────────────────────────────┐${NC}
+ ${yellow}│${NC}            ${GREEN}PASTIKAN IPVPS YANG DIPILIH BENAR${NC}            ${yellow}│${NC}
+ ${yellow}└─────────────────────────────────────────────────────────┘${NC}"
+read -p "   Masukkan IP : " iputama
+if [ -z $iputama ]; then
+menu
+fi
+VerifData
